@@ -3,8 +3,7 @@
 | Component | Possible Assignment Points | Partial Deductions | Assignment Points Earned |
 | --------  |-----------------------------| ----------------------------------------------------------------|-------------------------|
 
-| 1. Create a private repo named CSC_ECE_517_Assignment_1 | 4 points | (–1) repo is public
-(–1) repo name is not CSC_ECE_517_Assignment_1 | 4 | 
+| 1. Create a private repo named CSC_ECE_517_Assignment_1 | 4 points | (–1) repo is public (–1) repo name is not CSC_ECE_517_Assignment_1 | 4 | 
 
 2. Repo contains a README.md file
 2 points

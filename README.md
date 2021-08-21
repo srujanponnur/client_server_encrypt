@@ -1,1 +1,1 @@
-![Alt text] ./completedGitLevels.png
+![Alt text](./completedGitLevels.png)

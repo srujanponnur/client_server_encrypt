@@ -1,1 +1,1 @@
-# CSC_ECE_517_Assignment_1
+![Alt text] ./completedGitLevels.png

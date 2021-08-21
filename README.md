@@ -2,6 +2,7 @@
 
 | Component | Possible Assignment Points |Partial Deductions(*full deduction taken if component is missing) | Assignment Points Earned |
 | -------- |-----------------------------| ----------------------------------------------------------------|--------------------------/
+| Component | Possible Assignment Points |Partial Deductions(*full deduction taken if component is missing) | Assignment Points Earned |
 
 
 

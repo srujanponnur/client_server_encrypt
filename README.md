@@ -1,7 +1,10 @@
 ![Alt text](./completedGitLevels.png)
 
-|Component | Possible Assignment Points |Partial Deductions(*full deduction taken if component is missing) | Assignment Points Earned |
+| Component | Possible Assignment Points |Partial Deductions(*full deduction taken if component is missing) | Assignment Points Earned |
 | -------- |:--------------------------:| ----------------------------------------------------------------:|--------------------------/
+
+
+
 1. Create a private repo named CSC_ECE_517_Assignment_1
 4 points
 (–1) repo is public

@@ -42,7 +42,7 @@ if host == '-l':
         key = PBKDF2(password, salt, 16, 100000)
         #print("The key is", key)
         cipher = AES.new(key, AES.MODE_GCM, nonce)
-        result_dec_data = result_enc_data #cipher.decrypt(result_enc_data)
+        result_dec_data = cipher.decrypt(result_enc_data)
         print(result_dec_data.decode()),
         sock.close()
 
@@ -69,7 +69,7 @@ else:  # Client starts here
     sock2.sendall(cipher.nonce)  # Sending the Cipher Initialization vector
     sock2.sendall(salt)
     sock2.sendall(tag)
-    sock2.sendall(data)
+    sock2.sendall(ciphertext)
     sock2.close()
 
 # file_out = open("encrypted.bin", "wb")

@@ -25,7 +25,7 @@ if host == '-l':
             # print("The nonce is: ", nonce)
             salt = conn.recv(16)
             # print('The salt is', salt)
-            key = PBKDF2(password, salt, 16, 100000)
+            key = PBKDF2(password, salt, 32, 100000)
             # print("The key is", key)
             cipher = AES.new(key, AES.MODE_GCM, nonce)
             tag = conn.recv(16)
@@ -49,9 +49,8 @@ else:  # Client starts here
     sock2.connect((host, port))
     # fileInput = input()
     salt = get_random_bytes(16)
-    key = PBKDF2(password, salt, 16, 100000)
+    key = PBKDF2(password, salt, 32, 100000)
     full_cipher_text = b''
-
     # print("The data is:", data)
     currentData = None
     cipher = AES.new(key, AES.MODE_GCM)

@@ -34,7 +34,7 @@ if host == '-l':
             # print("The nonce is: ", nonce)
             salt = conn.recv(16)
             # print('The salt is', salt)
-            key = PBKDF2(password, salt, 16, 100000)
+            key = PBKDF2(password, salt, 32, 100000)
             # print("The key is", key)
             cipher = AES.new(key, AES.MODE_GCM, nonce)
             tag = conn.recv(16)
@@ -69,7 +69,7 @@ else:  # Client starts here
 
     password = str(pow(int(A), b, p))
     # print("The password is:", password)
-    key = PBKDF2(password, salt, 16, 100000)
+    key = PBKDF2(password, salt, 32, 100000)
     cipher = AES.new(key, AES.MODE_GCM)
     # print('Nonce: ', cipher.nonce)
     # print('The salt', salt)

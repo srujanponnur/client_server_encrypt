@@ -29,26 +29,26 @@ conn.sendall(bytes(A, 'utf-8'))
 password_client = str(pow(int(B_client), a, p))
 
 nonce_client = conn.recv(16)
-print("The nonce from actual client is: ", nonce_client)
+# print("The nonce from actual client is: ", nonce_client)
 salt_client = conn.recv(16)
-print("The salt from actual client is:", salt_client)
-key_client = PBKDF2(password_client, salt_client, 16, 100000)
-print("The Key between me and client is:", key_client)
+# print("The salt from actual client is:", salt_client)
+key_client = PBKDF2(password_client, salt_client, 32, 100000)
+# print("The Key between me and client is:", key_client)
 cipher_client = AES.new(key_client, AES.MODE_GCM, nonce_client)
 tag_client = conn.recv(16)
-print("The tag between me and client is:", tag_client)
+# print("The tag between me and client is:", tag_client)
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 sock.connect((target_host, target_port))
 sock.sendall(bytes(B, 'utf-8'))
 A_server = sock.recv(1024).decode()
 my_salt = get_random_bytes(16)
-print("The salt from me to server is:", my_salt)
+# print("The salt from me to server is:", my_salt)
 my_password = str(pow(int(A_server), b, p))
-my_key = PBKDF2(my_password, my_salt, 16, 100000)
-print("The Key between me and server is:", my_key)
+my_key = PBKDF2(my_password, my_salt, 32, 100000)
+# print("The Key between me and server is:", my_key)
 my_cipher = AES.new(my_key, AES.MODE_GCM)
-print("My nonce is: ", my_cipher.nonce)
+# print("My nonce is: ", my_cipher.nonce)
 sock.sendall(my_cipher.nonce)  # Sending the Cipher Initialization vector
 sock.sendall(my_salt)
 
@@ -80,12 +80,15 @@ while flag1 or flag2:
     if conn in rlist and flag2:
         enc_data = conn.recv(1024)
         if not enc_data:
-            cipher_client.verify(tag_client)
+            try:
+                cipher_client.verify(tag_client)
+            except ValueError:
+                sys.stderr.write("Error: Integrity check failed")
             flag1 = True
             flag2 = False
         else:
             dec_data = cipher_client.decrypt(enc_data)
-            sys.stdout.buffer.write(dec_data)
+            # sys.stdout.buffer.write(dec_data)
             my_enc_data = my_cipher.encrypt(dec_data)
             my_total_enc_data += my_enc_data
             total_dec_data += dec_data

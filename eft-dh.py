@@ -51,7 +51,7 @@ if host == '-l':
             # print("Successfully verified")
             sock.close()
     except ValueError:
-        sys.stderr.write("Error: Integrity check failed\n")
+        sys.stderr.write("Error: Integrity check failed")
 
 else:  # Client starts here
     sock2 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

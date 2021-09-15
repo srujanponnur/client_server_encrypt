@@ -83,7 +83,7 @@ while flag1 or flag2:
             try:
                 cipher_client.verify(tag_client)
             except ValueError:
-                sys.stderr.write("Error: Integrity check failed\n")
+                sys.stderr.write("Error: Integrity check failed")
             flag1 = True
             flag2 = False
         else:

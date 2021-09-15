@@ -1,4 +1,7 @@
-User: sponnur
+
+Name: Srujan Ponnur
+
+Unity ID: sponnur
 
 Student Id:200417755
 
